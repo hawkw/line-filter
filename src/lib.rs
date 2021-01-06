@@ -260,7 +260,7 @@ impl LineFilter {
             return Err(BadPath::new(file, "file paths must be absolute"));
         }
 
-        if file.extension() != Ok("rs") {
+        if file.extension().and_then(std::ffi::OsStr::to_str) != Some("rs") {
             return Err(BadPath::new(file, "files must be Rust source code files"));
         }
 
@@ -270,7 +270,7 @@ impl LineFilter {
             .to_owned();
 
         self.by_file.insert((Cow::Owned(file), line));
-        self
+        Ok(self)
     }
 
     /// Enable a set of spans or events by module path.

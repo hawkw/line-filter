@@ -16,7 +16,7 @@ fn main() {
 
     let mut filter = LineFilter::default();
     filter
-        .enable_by_mod("with_env_filter", 30)
+        .enable_by_mod("with_env_filter", 31)
         .enable_by_mod("with_env_filter", 33)
         // use an `EnvFilter` that enables DEBUG and lower in `some_module`,
         // and everything at the ERROR level.
