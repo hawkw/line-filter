@@ -10,11 +10,11 @@ mod some_module {
 fn main() {
     use tracing_subscriber::prelude::*;
 
-    let filter = LineFilter::new(vec![
-        ("basic::some_module".to_owned(), 6),
-        ("basic".to_owned(), 25),
-        ("basic".to_owned(), 27)
-    ]);
+    let mut filter = LineFilter::default();
+    filter
+        .enable_by_mod("basic::some_module", 6)
+        .enable_by_mod("basic", 25)
+        .enable_by_mod("basic", 27);
 
     tracing_subscriber::registry()
         .with(tracing_subscriber::fmt::layer().pretty())

@@ -12,10 +12,10 @@ mod some_module {
 fn main() {
     use tracing_subscriber::prelude::*;
 
-    let filter = LineFilter::new(vec![
-        ("with_env_filter".to_owned(), 28),
-        ("with_env_filter".to_owned(), 30)
-    ])
+    let mut filter = LineFilter::default();
+    filter
+        .enable_by_mod("with_env_filter", 28)
+        .enable_by_mod("with_env_filter", 30)
         // use an ``EnvFilter` that enables DEBUG and lower in `some_module`.
         .with_env_filter(EnvFilter::new("with_env_filter::some_module=debug"));
 
