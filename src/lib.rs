@@ -108,6 +108,7 @@
 
 use std::borrow::Cow;
 use std::collections::HashSet;
+use std::fmt;
 use std::path::{Path, PathBuf};
 use tracing_core::{subscriber::Interest, Metadata, Subscriber};
 use tracing_subscriber::{
