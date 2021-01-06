@@ -1,4 +1,4 @@
-use line_filter::LineFilter;
+use tracing_line_filter::LineFilter;
 
 mod some_module {
     pub fn do_stuff() {
