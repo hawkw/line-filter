@@ -191,7 +191,7 @@ impl LineFilter {
     ///
     /// // Build a line filter to enable the event in `do_stuff`.
     /// let mut filter = LineFilter::default();
-    /// filter.enable_by_module("my_crate::my_module", 5);
+    /// filter.enable_by_mod("my_crate::my_module", 5);
     ///
     /// // Build a subscriber and enable that filter.
     /// use tracing_subscriber::prelude::*;
@@ -202,7 +202,7 @@ impl LineFilter {
     ///     .init();
     ///
     /// // Now, the event is enabled!
-    /// do_stuff();
+    /// my_module::do_stuff();
     /// ```
     ///
     /// The [`std::module_path!()`] macro can be used to enable an event in the
@@ -216,7 +216,7 @@ impl LineFilter {
     /// }
     ///
     /// let mut filter = LineFilter::default();
-    /// filter.enable_by_module(module_path!(), 4);
+    /// filter.enable_by_mod(module_path!(), 4);
     ///
     ///  // ...
     /// ```
@@ -313,8 +313,8 @@ impl LineFilter {
     ///     .init();
     ///
     /// // Now, the events are enabled!
-    /// do_stuff();
-    /// do_other_stuff();
+    /// foo::do_stuff();
+    /// bar::do_other_stuff();
     /// ```
     pub fn with_modules<I>(&mut self, modules: impl IntoIterator<Item = (I, u32)>) -> &mut Self
     where
